@@ -21,8 +21,12 @@ public class Main {
 		
 		ContatoDAO contatoDao = new ContatoDAO();
 		
-		System.out.println(contatoDao.getContatos().toString());
-		
+		for(Contato c : contatoDao.getContatos()) {
+			System.out.println("Contato: " + c.getName());
+			System.out.println("Idade: " + c.getAge());
+			System.out.println("Data de cadastro: " + c.getDataDeCadastro()+ "\n");
+			
+		};
 		
 	}
 }
