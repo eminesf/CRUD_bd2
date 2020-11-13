@@ -9,7 +9,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Contato contato = new Contato();
+		/*Contato contato = new Contato();
 		
 		contato.setName("Gabriela");
 		contato.setAge(27);
@@ -17,7 +17,12 @@ public class Main {
 		
 		ContatoDAO contatoDao = new ContatoDAO();
 		
-		contatoDao.save(contato);
+		contatoDao.save(contato);*/
+		
+		ContatoDAO contatoDao = new ContatoDAO();
+		
+		System.out.println(contatoDao.getContatos().toString());
+		
 		
 	}
 }

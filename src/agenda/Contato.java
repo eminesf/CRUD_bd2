@@ -13,6 +13,11 @@ public class Contato {
 		return id;
 	}
 
+	@Override
+	public String toString() {
+		return "Contato [id=" + id + ", name=" + name + ", age=" + age + ", dataDeCadastro=" + dataDeCadastro + "]";
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
