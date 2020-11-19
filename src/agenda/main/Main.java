@@ -23,7 +23,7 @@ public class Main {
 		
 		contatoDao.save(contato);*/
 		
-		Pessoa pessoa = new Pessoa("Emiliano", 28, new Date());
+		Pessoa pessoa = new Pessoa("Gabi", 28, 3088, new Date());
 		Endereco endereco = new Endereco("Rua A", "Porto Alegre", "RS", "Brasil");
 		Contato contato = new Contato(995582616, "emiliano@gmail.com");
 		

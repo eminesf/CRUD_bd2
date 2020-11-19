@@ -1,8 +1,9 @@
 create table pessoa (
-	id INT NOT NULL AUTO_INCREMENT,
-    nome VARCHAR(255) NOT NULL,
-    idade INT NOT NULL,
-    dataCadastrato DATE,
+	id 				INT NOT NULL AUTO_INCREMENT,
+    nome 			VARCHAR(255) NOT NULL,
+    idade 			INT NOT NULL,
+    rg 				INT NOT NULL,
+    dataCadastrato 	DATE,
     
     PRIMARY KEY(id)    
 ) ENGINE=INNODB;

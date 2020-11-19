@@ -5,6 +5,7 @@ import java.sql.Date;
 //import java.sql.ResultSet;
 //import java.util.ArrayList;
 //import java.util.List;
+import java.sql.ResultSet;
 
 import com.mysql.jdbc.PreparedStatement;
 
@@ -15,21 +16,50 @@ public class PessoaDAO {
 
 	public void savePessoa(Pessoa pessoa) {
 
-		String sql = "INSERT INTO pessoa(nome, idade, dataCadastrato) VALUES(?,?,?)";
-
-		Connection conn = null;
-		PreparedStatement pstm = null;
+		String sql = "INSERT INTO pessoa(nome, idade, rg, dataCadastrato) VALUES(?,?,?,?)";
+		String sql2= "SELECT * FROM pessoa";
+		
+		Connection conexao = null;
+		PreparedStatement prepare = null;
+		ResultSet resultId = null;
+		
+		
 
 		try {
-			conn = ConnectionFactory.createConnectionToMySQL();
+			conexao = ConnectionFactory.createConnectionToMySQL();
 
-			pstm = (PreparedStatement) conn.prepareStatement(sql);
+			prepare = (PreparedStatement) conexao.prepareStatement(sql);
 
-			pstm.setString(1, pessoa.getName());
-			pstm.setInt(2, pessoa.getAge());
-			pstm.setDate(3, new Date(pessoa.getDataDeCadastro().getTime()));
+			prepare.setString(1, pessoa.getName());
+			prepare.setInt(2, pessoa.getAge());
+			prepare.setInt(3, pessoa.getRg());			
+			prepare.setDate(4, new Date(pessoa.getDataDeCadastro().getTime()));
 
-			pstm.execute();
+			prepare.execute();
+			
+			try {
+				prepare = (PreparedStatement) conexao.prepareStatement(sql2);
+				resultId = prepare.executeQuery();
+				
+				while(resultId.next()) {
+					int resultado = resultId.getInt("rg");
+					
+					if(pessoa.getRg() == resultado) {
+						pessoa.setId(resultId.getInt("id"));
+					}
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if(resultId != null) {
+						resultId.close();
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 
 			System.out.println("Pessoa salva com sucesso!");
 		} catch (Exception e) {
@@ -37,18 +67,19 @@ public class PessoaDAO {
 		} finally {
 
 			try {
-				if (pstm != null) {
-					pstm.close();
+				if (prepare != null) {
+					prepare.close();
 				}
 
-				if (conn != null) {
-					conn.close();
+				if (conexao != null) {
+					conexao.close();
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 	}
+
 
 //	public List<Pessoa> getContatos() {
 //

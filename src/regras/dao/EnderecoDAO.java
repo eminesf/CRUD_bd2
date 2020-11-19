@@ -12,7 +12,7 @@ public class EnderecoDAO {
 	
 	public void saveEndereco(Endereco endereco, Pessoa pessoa) {
 
-		String sql = "INSERT INTO endereco(rua, cidade, estado, pais) VALUES(?,?,?,?)";
+		String sql = "INSERT INTO endereco(rua, cidade, estado, pais, idPessoa) VALUES(?,?,?,?,?)";
 
 		Connection conexao = null;
 		PreparedStatement prepare = null;

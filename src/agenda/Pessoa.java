@@ -7,20 +7,29 @@ public class Pessoa {
 	private int id;
 	private String name;
 	private int age;
+	private int rg;
 	private Date dataDeCadastro;
 
+	
 
-	public Pessoa(int id, String name, int age, Date dataDeCadastro) {
-		this.id = id;
+	public Pessoa() {
+
+	}
+
+	public Pessoa(String name, int age, int rg, Date dataDeCadastro) {
 		this.name = name;
 		this.age = age;
+		this.rg = rg;
 		this.dataDeCadastro = dataDeCadastro;
 	}
 	
+	public int getRg() {
+		return rg;
+	}
 
-
-
-
+	public void setRg(int rg) {
+		this.rg = rg;
+	}
 
 	public int getId() {
 		return id;
