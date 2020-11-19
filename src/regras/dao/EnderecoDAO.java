@@ -4,30 +4,33 @@ import java.sql.Connection;
 
 import com.mysql.jdbc.PreparedStatement;
 
-import agenda.Contato;
+import agenda.Endereco;
 import agenda.Pessoa;
 import conexao.factory.ConnectionFactory;
 
-public class ContatoDAO {
+public class EnderecoDAO {
 	
-	public void saveContato(Contato contato, Pessoa pessoa) {
-		
-		String sql = "INSERT INTO contato(telefone, email, idPessoa) VALUES(?,?,?)";
-		
+	public void saveEndereco(Endereco endereco, Pessoa pessoa) {
+
+		String sql = "INSERT INTO endereco(rua, cidade, estado, pais) VALUES(?,?,?,?)";
+
 		Connection conexao = null;
 		PreparedStatement prepare = null;
-		
+
 		try {
 			conexao = ConnectionFactory.createConnectionToMySQL();
+
 			prepare = (PreparedStatement) conexao.prepareStatement(sql);
-			
-			prepare.setInt(1, contato.getTelefone());
-			prepare.setString(2, contato.getEmail());
-			prepare.setInt(3, pessoa.getId());
+
+			prepare.setString(1, endereco.getRua());
+			prepare.setString(2, endereco.getCidade());
+			prepare.setString(3, endereco.getEstado());
+			prepare.setString(4, endereco.getPais());
+			prepare.setInt(5, pessoa.getId());
 			
 			prepare.execute();
-			
-			System.out.println("Contato de " + pessoa.getName() + " salvo com sucesso");
+
+			System.out.println("Endereço de " + pessoa.getName() + " salvo com sucesso!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -45,4 +48,6 @@ public class ContatoDAO {
 			}
 		}
 	}
+	
+
 }

@@ -1,49 +1,38 @@
 package agenda;
 
-import java.util.Date;
-
 public class Contato {
 
-	private int id;
-	private String name;
-	private int age;
-	private Date dataDeCadastro;
+	private int idContato;
+	private int telefone;
+	private String email;
 
-	public int getId() {
-		return id;
+	public Contato(int telefone, String email) {
+		this.telefone = telefone;
+		this.email = email;
 	}
 
-	@Override
-	public String toString() {
-		return "Contato [id=" + id + ", name=" + name + ", age=" + age + ", dataDeCadastro=" + dataDeCadastro + "]";
+	public int getIdContato() {
+		return idContato;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdContato(int idContato) {
+		this.idContato = idContato;
 	}
 
-	public String getName() {
-		return name;
+	public int getTelefone() {
+		return telefone;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTelefone(int telefone) {
+		this.telefone = telefone;
 	}
 
-	public int getAge() {
-		return age;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public Date getDataDeCadastro() {
-		return dataDeCadastro;
-	}
-
-	public void setDataDeCadastro(Date dataDeCadastro) {
-		this.dataDeCadastro = dataDeCadastro;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }
