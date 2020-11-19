@@ -7,12 +7,25 @@ public class Endereco {
 	private String estado;
 	private String pais;
 	
+		
+
+	public Endereco() {
+
+	}
 
 	public Endereco(String rua, String cidade, String estado, String pais) {
 		this.rua = rua;
 		this.cidade = cidade;
 		this.estado = estado;
 		this.pais = pais;
+	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "Endereco [idEndereco=" + idEndereco + ", rua=" + rua + ", cidade=" + cidade + ", estado=" + estado
+				+ ", pais=" + pais + "]\n";
 	}
 
 	public int getIdEndereco() {

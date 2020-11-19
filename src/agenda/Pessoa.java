@@ -37,7 +37,7 @@ public class Pessoa {
 
 	@Override
 	public String toString() {
-		return "Contato [id=" + id + ", name=" + name + ", age=" + age + ", dataDeCadastro=" + dataDeCadastro + "]";
+		return "Contato [id=" + id + ", name=" + name + ", age=" + age + ", dataDeCadastro=" + dataDeCadastro + "]\n";
 	}
 
 	public void setId(int id) {
